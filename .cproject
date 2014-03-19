@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="test_ez430" buildProperties="" description="" id="dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577.152410114" name="/" resourcePath="">
+						<toolChain id="dk.xpg.msp430eclipse.toolchain.gcc.base.740902638" name="dk.xpg.msp430eclipse.toolchain.gcc.base" superClass="dk.xpg.msp430eclipse.toolchain.gcc.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="dk.xpg.msp430eclipse.targetplatform.msp430.1740303551" isAbstract="false" name="MSP430 Cross-Target" osList="all" superClass="dk.xpg.msp430eclipse.targetplatform.msp430"/>
+							<builder arguments="BOARD=chronos" buildPath="${workspace_loc:/test_ez430}" command="${MSP430MAKE}" id="dk.xpg.msp430eclipse.target.gnu.builder.566603170" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="MSP430 GNU Make Builder" parallelBuildOn="true" parallelizationNumber="2" stopOnErr="false" superClass="dk.xpg.msp430eclipse.target.gnu.builder"/>
+							<tool id="dk.xpg.msp430eclipse.tool.compiler.gcc.1256989286" name="MSP430 C Compiler" superClass="dk.xpg.msp430eclipse.tool.compiler.gcc">
+								<option id="dk.xpg.msp430eclipse.compiler.option.includes.paths.134179775" superClass="dk.xpg.msp430eclipse.compiler.option.includes.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test_ez430/logic}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/test_ez430}&quot;"/>
+								</option>
+								<inputType id="dk.xpg.msp430eclipse.tool.compiler.gcc.input.1365608730" name="C Source File" superClass="dk.xpg.msp430eclipse.tool.compiler.gcc.input"/>
+								<inputType id="dk.xpg.msp430eclipse.tool.compiler.gcc.input.cc.696775295" name="C++ Source File" superClass="dk.xpg.msp430eclipse.tool.compiler.gcc.input.cc"/>
+							</tool>
+							<tool id="dk.xpg.msp430eclipse.tool.assembler.gcc.1106438383" name="MSP430 Assembler" superClass="dk.xpg.msp430eclipse.tool.assembler.gcc">
+								<inputType id="dk.xpg.msp430eclipse.tool.assembler.input.1381842720" name="Assembler Files" superClass="dk.xpg.msp430eclipse.tool.assembler.input"/>
+							</tool>
+							<tool id="dk.xpg.msp430eclipse.tool.linker.gcc.1217221249" name="MSP430 Linker" superClass="dk.xpg.msp430eclipse.tool.linker.gcc">
+								<inputType id="dk.xpg.msp430eclipse.tool.linker.input.1038228230" name="Object Files" superClass="dk.xpg.msp430eclipse.tool.linker.input"/>
+							</tool>
+							<tool id="dk.xpg.msp430eclipse.tool.archiver.gcc.88197529" name="MSP430 Archiver" superClass="dk.xpg.msp430eclipse.tool.archiver.gcc"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="test_ez430.null.1283852652" name="test_ez430"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/test_ez430"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577;dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577.152410114;dk.xpg.msp430eclipse.tool.compiler.gcc.1256989286;dk.xpg.msp430eclipse.tool.compiler.gcc.input.cc.696775295">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="dk.xpg.msp430eclipse.MSP430GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="dk.xpg.msp430eclipse.configuration.app.debug.731949090;dk.xpg.msp430eclipse.configuration.app.debug.731949090.;dk.xpg.msp430eclipse.tool.compiler.gcc.1361924755;dk.xpg.msp430eclipse.tool.compiler.gcc.input.cc.932008363">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="dk.xpg.msp430eclipse.MSP430GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577;dk.xpg.msp430eclipse.toolchain.gcc.base.1147800577.152410114;dk.xpg.msp430eclipse.tool.compiler.gcc.1256989286;dk.xpg.msp430eclipse.tool.compiler.gcc.input.1365608730">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="dk.xpg.msp430eclipse.MSP430GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="dk.xpg.msp430eclipse.configuration.app.debug.731949090;dk.xpg.msp430eclipse.configuration.app.debug.731949090.;dk.xpg.msp430eclipse.tool.compiler.gcc.1361924755;dk.xpg.msp430eclipse.tool.compiler.gcc.input.947912523">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="dk.xpg.msp430eclipse.MSP430GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>
