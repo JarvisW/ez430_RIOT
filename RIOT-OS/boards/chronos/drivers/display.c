@@ -51,7 +51,7 @@
  *
  */
 
-#ifdef CHRONOS
+//#ifdef CHRONOS
 
 /* *************************************************************************************************
  * Include section
@@ -436,4 +436,4 @@ void display_all_off(void)
     }
 }
 
-#endif
+//#endif

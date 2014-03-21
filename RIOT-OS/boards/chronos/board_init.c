@@ -19,7 +19,7 @@
  *
  */
 
-#ifdef CHRONOS
+//#ifdef CHRONOS
 
 #include <stdint.h>
 
@@ -103,7 +103,8 @@ void board_init(void)
     cc430_cpu_init();
     lcd_init();
     init_display_putchar();
+	initBoard();
     DEBUG("DISP OK");
 }
 
-#endif
+//#endif

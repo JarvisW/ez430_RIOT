@@ -12,15 +12,15 @@
 #include <msg.h>
 //#include "logic/include/display_logic.h"
 #include <display_logic.h>
-#ifdef CHRONOS
+//#ifdef CHRONOS
 #include <display.h>
 //#include <include/display.h>
 /*#include "../RIOT/boards/chronos/drivers/include/display.h"*/
-#else
+//#else
 //#include <iostream.h>
-#include <stdio.h>
-#include <stdlib.h>
-#endif
+//#include <stdio.h>
+//#include <stdlib.h>
+//#endif
 
 void LCD_Thread(void)
 {
@@ -45,14 +45,14 @@ void LCD_Thread(void)
 
 void RIOT_printf(const char *str)
 {
-#ifdef CHRONOS
+//#ifdef CHRONOS
 //#if (BOARD==chronos)
 	/* char *p = str;*/
 	display_chars(LCD_SEG_L1_3, (char*)str, SEG_ON);
 //#endif
-#else
+//#else
 	//cout << str << "\n";
-	printf("%s\n",str);
-#endif
+//	printf("%s\n",str);
+//#endif
 }
 

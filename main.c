@@ -17,12 +17,17 @@
 #include <stddef.h>
 
 #define TRUE 		1
-#define DELAY		1000000
+#define MS			1000
+#define DELAY_S		1000 * MS
 
 int main(void)
 {
 	//wtimer_init();
 	vtimer_init();
+	vtimer_t * mainTimer;
+	timex_t delay;
+	delay.microseconds = 0;
+	delay.seconds = 1;
 
 	int pidLCD = thread_create(LCD_Thread_Stack,
 			sizeof(LCD_Thread_Stack),
@@ -43,12 +48,13 @@ int main(void)
 	while (TRUE)
 	{
 //		hwtimer_delay(HWTIMER_TICKS(1000000));
+		vtimer_set_wakeup(mainTimer, delay, thread_getpid());
 		message.content.value = count++;
 		thread_wakeup(pidLCD);
 //		printf("Sending message\n");
 		msg_send(&message, pidLCD, TRUE);
 		thread_yield();
-		vtimer_usleep(DELAY);
+		//vtimer_usleep(DELAY_S);
 	}
 
 }
