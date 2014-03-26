@@ -20,6 +20,8 @@
 #define MS			1000
 #define DELAY_S		1000 * MS
 
+int pidLCD;
+
 int main(void)
 {
 	//wtimer_init();
@@ -27,9 +29,9 @@ int main(void)
 	vtimer_t * mainTimer;
 	timex_t delay;
 	delay.microseconds = 0;
-	delay.seconds = 1;
+	delay.seconds = 10;
 
-	int pidLCD = thread_create(LCD_Thread_Stack,
+	pidLCD = thread_create(LCD_Thread_Stack,
 			sizeof(LCD_Thread_Stack),
 			PRIORITY_MAIN-1,
 			CREATE_STACKTEST | CREATE_SLEEPING | CREATE_WOUT_YIELD,
@@ -52,7 +54,7 @@ int main(void)
 		message.content.value = count++;
 		thread_wakeup(pidLCD);
 //		printf("Sending message\n");
-		msg_send(&message, pidLCD, TRUE);
+//		msg_send(&message, pidLCD, TRUE);
 		thread_yield();
 		//vtimer_usleep(DELAY_S);
 	}

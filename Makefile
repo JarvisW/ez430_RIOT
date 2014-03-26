@@ -31,7 +31,7 @@ endif
 USEMODULE += vtimer
 #USEMODULE += sht11
 #USEMODULE += ltc4150
-USEMODULE += cc110x
+#USEMODULE += cc110x
 #USEMODULE += fat
 #USEMODULE += ps
 
