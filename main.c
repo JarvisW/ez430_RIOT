@@ -15,6 +15,7 @@
 //#include "logic/include/display_logic.h"
 #include <display_logic.h>
 #include <stddef.h>
+#include <board.h>
 
 #define TRUE 		1
 #define MS			1000
@@ -24,6 +25,7 @@ int pidLCD;
 
 int main(void)
 {
+	initBoard();
 	//wtimer_init();
 	vtimer_init();
 	vtimer_t * mainTimer;

@@ -79,8 +79,8 @@ uint8_t board_mng_thread_pid;
 //
 //	Prototypes
 //
-void port2IRQ_ISR(void);
-void accelIRQ_ISR(void);
+//void port2IRQ_ISR(void);
+//void accelIRQ_ISR(void);
 
 void initBoard(void);
 

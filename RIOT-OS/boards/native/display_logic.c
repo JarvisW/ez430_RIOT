@@ -37,9 +37,9 @@ void LCD_Thread(void)
 		char buf[4];
 		char *p;
 
-		p = itoa(message.content.value, 10, 0);
+		//p = itoa(message.content.value, 10, 0);
 		for (int i=0; i<4; i++) buf[i] = *(p+i);
-		RIOT_printf(buf);
+		RIOT_printf(message.content.ptr);
 //		printf("Counter: %d\n", message.content.value);
 		thread_sleep();
 	}

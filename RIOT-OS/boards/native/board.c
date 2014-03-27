@@ -37,7 +37,7 @@ void initBoard(void)
 	board_sim_thread_pid = thread_create(stack_sim,
 		KERNEL_CONF_STACKSIZE_MAIN,
 		PRIORITY_MAIN,
-		CREATE_WOUT_YIELD | CREATE_STACKTEST,
+		/*CREATE_WOUT_YIELD |*/ CREATE_STACKTEST,
 		board_sim_thread, "Buttons Sim");
 }
 
@@ -91,6 +91,7 @@ void port2IRQ_ISR(void)
 void board_mng_thread(void)
 {
 	msg_t message;
+	printf("Board Management Thread started\n");
 	while (true)
 	{
 		msg_receive(&message);
@@ -137,25 +138,29 @@ void board_mng_thread(void)
 void board_sim_thread(void)
 {
 	msg_t message;
+	printf ("Entering sim thread loop\n");	
 	while(true)
-	{
-		char ch;
-		getch(&ch);
+	{		
+		char ch = getchar();
+		//getch(&ch);
 		thread_wakeup(board_mng_thread_pid);
-		//message.content.value = (uint32_t)ch;
+		//message.content.value = (uint32_t)ch;		
+		const char str[10];
+		memcpy (str, "\0\0\0\0\0\0\0\0\0\0", 10);
 		switch(ch)
 		{
-			case 's': message.content.ptr = "StAr";
+			case 's': memcpy(str, "StAr\0",5);				
 				break;
-			case 'n': message.content.ptr = "nUM";
+			case 'n': memcpy(str,"nUM\0", 4);
 				break;
-			case 'u': message.content.ptr = "UP";
+			case 'u': memcpy(str, "UP\0", 3);
 				break;
-			case 'd': message.content.ptr = "dOWn";
+			case 'd': memcpy(str, "dOWn\0", 5);
 				break;
-			case 'b': message.content.ptr = "BAcK";
+			case 'b': memcpy(str, "BAcK\0", 5);
 				break;				
 		}
+		message.content.ptr = str;		
 		msg_send(&message, board_mng_thread_pid, true);		
 	}
 }
