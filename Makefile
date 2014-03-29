@@ -33,7 +33,7 @@ USEMODULE += vtimer
 #USEMODULE += ltc4150
 #USEMODULE += cc110x
 #USEMODULE += fat
-#USEMODULE += ps
+USEMODULE += ps
 
 export INCLUDES = -I$(RIOTBOARD)/$(BOARD)/include -I$(RIOTBASE)/core/include -I$(RIOTCPU)/$(CPU)/include -I$(RIOTBASE)/sys/lib -I$(RIOTBASE)/sys/include/ -I$(RIOTBASE)/drivers/include/ -I$(RIOTBASE)/boards/$(RIOTBOARD)/drivers/include	 
 #export INCLUDES += -Ilogic/include

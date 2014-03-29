@@ -1,11 +1,18 @@
 #include <stdio.h>
+#include <unistd.h>
+#include <sys/select.h>
 #include <thread.h>
 #include <kernel.h>
 #include <msg.h>
 //#include <gpioint.h>
 //#include "include/buttons.h"
 #include "include/board.h"
+#include "../../../fall_manager_logic.h"
 //#include "drivers/include/display.h"
+
+#define ENABLE_DEBUG (0)
+#include "debug.h"
+
 
 char stack[KERNEL_CONF_STACKSIZE_MAIN];
 char stack_sim[KERNEL_CONF_STACKSIZE_MAIN];
@@ -135,32 +142,71 @@ void board_mng_thread(void)
 	 * */
 }
 
+char kbhit(void)
+{
+	struct timeval tv;
+	fd_set read_fd;
+
+	tv.tv_sec = 0;
+	tv.tv_usec = 0;
+
+	FD_ZERO(&read_fd);
+	FD_SET(STDIN_FILENO, &read_fd);
+	select(STDIN_FILENO+1, &read_fd, NULL, NULL, &tv);
+	if (FD_ISSET(0, &read_fd))
+	{
+		return 1; //getchar();
+	}
+	else return 0;
+
+}
+
 void board_sim_thread(void)
 {
 	msg_t message;
 	printf ("Entering sim thread loop\n");	
 	while(true)
 	{		
-		char ch = getchar();
-		//getch(&ch);
+//		char ch = getchar();
+//		char ch = kbhit();
+
+		char ch;
+		while (!kbhit()) thread_yield();
+		read(STDIN_FILENO, &ch, 1);
+//		while (!fread(&ch, 1, sizeof ch, stdin)) ;
 		thread_wakeup(board_mng_thread_pid);
 		//message.content.value = (uint32_t)ch;		
 		const char str[10];
 		memcpy (str, "\0\0\0\0\0\0\0\0\0\0", 10);
+		uint8_t valid = 0;
 		switch(ch)
 		{
-			case 's': memcpy(str, "StAr\0",5);				
+			case 's': memcpy(str, "StAr\0",5);
+				valid = 1;
 				break;
 			case 'n': memcpy(str,"nUM\0", 4);
+				valid = 1;
 				break;
 			case 'u': memcpy(str, "UP\0", 3);
+				valid = 1;
 				break;
 			case 'd': memcpy(str, "dOWn\0", 5);
+				valid = 1;
 				break;
 			case 'b': memcpy(str, "BAcK\0", 5);
-				break;				
+				valid = 1;
+				break;
+			case 'f': thread_wakeup(fall_mng_thread_pid);
+				msg_t foo;
+				foo.content.value = 0;
+				msg_send(&foo, fall_mng_thread_pid, true);
+				break;
 		}
-		message.content.ptr = str;		
-		msg_send(&message, board_mng_thread_pid, true);		
+		if (valid)
+		{
+			message.content.ptr = str;
+			msg_send(&message, board_mng_thread_pid, true);
+			thread_print_all();
+		}
 	}
 }

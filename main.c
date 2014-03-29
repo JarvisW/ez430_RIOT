@@ -16,6 +16,7 @@
 #include <display_logic.h>
 #include <stddef.h>
 #include <board.h>
+#include "fall_manager_logic.h"
 
 #define TRUE 		1
 #define MS			1000
@@ -35,7 +36,7 @@ int main(void)
 
 	pidLCD = thread_create(LCD_Thread_Stack,
 			sizeof(LCD_Thread_Stack),
-			PRIORITY_MAIN-1,
+			PRIORITY_MAIN+1,
 			CREATE_STACKTEST | CREATE_SLEEPING | CREATE_WOUT_YIELD,
 			LCD_Thread,
 			"LCD thread");
@@ -48,6 +49,8 @@ int main(void)
 		while (1);
 	}
 
+	initFallManager();
+
 	uint8_t count = 0;
 	while (TRUE)
 	{
@@ -55,6 +58,7 @@ int main(void)
 		vtimer_set_wakeup(mainTimer, delay, thread_getpid());
 		message.content.value = count++;
 		thread_wakeup(pidLCD);
+		thread_wakeup(fall_mng_thread_pid);
 //		printf("Sending message\n");
 //		msg_send(&message, pidLCD, TRUE);
 		thread_yield();
